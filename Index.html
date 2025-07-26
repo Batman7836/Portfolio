@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Writing Portfolio - Ali Rezaee</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Font is now handled by custom CSS for better control -->
+    <style>
+        body {
+            font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        }
+        /* Style for active navigation link */
+        .nav-link.active {
+            color: #3b82f6; /* A blue color for active state */
+            font-weight: 500;
+        }
+        /* Animation for content fading in */
+        .fade-in {
+            animation: fadeIn 0.5s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* Styling for the accordion dropdowns */
+        .accordion-summary {
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background-color: #f8fafc; /* slate-50 */
+            border-radius: 0.5rem;
+            transition: background-color 0.2s;
+        }
+        .accordion-summary:hover {
+            background-color: #f1f5f9; /* slate-100 */
+        }
+        .accordion-summary::-webkit-details-marker {
+            display: none;
+        }
+        .accordion-content {
+            padding: 1rem;
+            border-top: 1px solid #e2e8f0; /* slate-200 */
+        }
+        /* Custom marker for accordion */
+        .accordion-summary::after {
+            content: '+';
+            font-size: 1.5rem;
+            font-weight: 300;
+            transition: transform 0.2s;
+        }
+        details[open] > .accordion-summary::after {
+            content: '−';
+            transform: rotate(180deg);
+        }
+        /* Style for essay text to match user's screenshot */
+        .prose {
+            font-family: "Times New Roman", Times, serif;
+        }
+        .prose p, .prose a, .prose li {
+            line-height: 1.15;
+        }
+        /* Added spacing between paragraphs */
+        .prose p {
+            margin-bottom: 1.25rem;
+        }
+        .prose p:last-child {
+            margin-bottom: 0;
+        }
+        /* Glowing effect for the special project */
+        .magnum-opus {
+            animation: pulse 2.5s infinite;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(59, 130, 246, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <!-- Header & Navigation -->
+    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 border-b border-slate-200">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#home" class="text-xl font-bold text-slate-900 nav-link">Ali Rezaee</a>
+            <ul class="flex items-center space-x-6">
+                <li><a href="#home" class="nav-link text-slate-600 hover:text-blue-500 transition-colors">Home</a></li>
+                <li><a href="#portfolio" class="nav-link text-slate-600 hover:text-blue-500 transition-colors">Portfolio</a></li>
+                <li><a href="#about" class="nav-link text-slate-600 hover:text-blue-500 transition-colors">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content Area -->
+
+    <!-- Home section background image -->
+    <div id="home-view" class="fade-in bg-cover bg-center" style="background-image: url('/4f3j1w4jssi11.jpg');">
+        <!-- Overlay for text readability -->
+        <div class="min-h-[70vh] flex flex-col justify-center items-center text-center px-6 bg-black/60 text-white">
+            <div class="max-w-3xl">
+                <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Advanced Writing Portfolio</h1>
+                <p class="text-lg text-slate-100 mb-2">A collection of works by Ali Rezaee</p>
+                <p class="text-md text-slate-200">Course: Advanced Writing | Instructor: Prof. Shabnam Naderi</p>
+                <p class="mt-6 text-slate-100">This website presents a collection of my major writing assignments, including final versions, drafts, and reflective essays that document my writing process and growth throughout the semester.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- All other content is in a separate container that is shown/hidden -->
+    <div id="app-view" class="hidden fade-in">
+        <main class="container mx-auto px-6 py-12">
+            <!-- Portfolio Section -->
+            <section id="portfolio" class="page-section">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-slate-900">My Work</h2>
+                    <p class="text-slate-600 mt-2">A selection of my essays and projects from the course.</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Project Cards Here -->
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-1 transition-transform duration-300"><div class="p-6"><h3 class="text-xl font-semibold mb-2 text-slate-900">Free Writing</h3><p class="text-slate-600 mb-4">"Identity"</p><button onclick="showProject('project1')" class="font-medium text-blue-600 hover:text-blue-800 transition-colors">View Project &rarr;</button></div></div>
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-1 transition-transform duration-300"><div class="p-6"><h3 class="text-xl font-semibold mb-2 text-slate-900">Argumentative Essay</h3><p class="text-slate-600 mb-4">"Spread of Misinformation"</p><button onclick="showProject('project2')" class="font-medium text-blue-600 hover:text-blue-800 transition-colors">View Project &rarr;</button></div></div>
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-1 transition-transform duration-300"><div class="p-6"><h3 class="text-xl font-semibold mb-2 text-slate-900">Descriptive Essay</h3><p class="text-slate-600 mb-4">"Guernica"</p><button onclick="showProject('project3')" class="font-medium text-blue-600 hover:text-blue-800 transition-colors">View Project &rarr;</button></div></div>
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-1 transition-transform duration-300"><div class="p-6"><h3 class="text-xl font-semibold mb-2 text-slate-900">Multimodal Text</h3><p class="text-slate-600 mb-4">"A Green Initiative"</p><button onclick="showProject('project4')" class="font-medium text-blue-600 hover:text-blue-800 transition-colors">View Project &rarr;</button></div></div>
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-1 transition-transform duration-300 magnum-opus"><div class="p-6"><h3 class="text-xl font-semibold mb-2 text-slate-900">Argumentative Essay (2)</h3><p class="text-slate-600 mb-4">"AI in Academia"</p><button onclick="showProject('project5')" class="font-medium text-blue-600 hover:text-blue-800 transition-colors">View Project &rarr;</button></div></div>
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-1 transition-transform duration-300"><div class="p-6"><h3 class="text-xl font-semibold mb-2 text-slate-900">Problem and Solution Essay</h3><p class="text-slate-600 mb-4">"Suggestions for a Relaxing Life"</p><button onclick="showProject('project6')" class="font-medium text-blue-600 hover:text-blue-800 transition-colors">View Project &rarr;</button></div></div>
+                </div>
+            </section>
+
+            <!-- About Section -->
+            <section id="about" class="page-section">
+                 <div class="max-w-3xl mx-auto">
+                    <h2 class="text-3xl font-bold text-slate-900 text-center mb-8">About Me</h2>
+                    <div class="space-y-4 text-slate-700 bg-white p-8 rounded-lg shadow-sm">
+                        <p>Hello! My name is Ali Rezaee. I am a 19-year-old freshman at Allameh Tabataba'i University, and this portfolio is the culmination of my work in the Advanced Writing course. It reflects my development in critical thinking, drafting, and revision throughout the semester.</p>
+                        <p>In this course, I've engaged in various writing styles, from argumentative to descriptive, and explored the role of multimodality and AI in the writing process. The peer review sessions and collaborative work were instrumental in shaping my final pieces.</p>
+                        <p>Feel free to explore my work. Each project includes not only the final version but also the initial drafts and a reflective essay on the creative process.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Project Detail Pages (Hidden by default) -->
+            <div id="project-details" class="hidden">
+                <!-- Project 1: Free Writing -->
+                <div id="project1" class="project-content"><div class="max-w-4xl mx-auto"><button onclick="goBackToPortfolio()" class="mb-8 font-medium text-blue-600 hover:text-blue-800 transition-colors">&larr; Back to Portfolio</button><h2 class="text-3xl font-bold text-slate-900 mb-4">Free Writing Assignment</h2><div class="space-y-4">
+                    <details class="bg-white rounded-lg shadow-sm"><summary class="accordion-summary font-semibold text-xl text-slate-800">Final Version</summary><div class="accordion-content prose max-w-none">
+                        <h3 class="font-bold text-center">Ali Rezaee & MohammadJavad Ashrafi present: Identity</h3>
+                        <p>Identity is made of many different aspects, each of which contributes to its meaning and importance in our lives.</p>
+                        <p>First and foremost is the place where we’re born, our country of origin. Our nationality dictates the culture and language we grow up with, which in turn forms our overall identity. For instance, our culture may require us to follow a certain dress code that will become a part of our identity. Language also plays a crucial role in shaping our thoughts and the way we communicate with others, reinforcing our cultural roots.</p>
+                        <p>Another characteristic that forms a part of our identity is race. Some people may view and treat us differently based on the color of our skin. For example, the African-American community in the US has its own subculture. Race can also impact our experiences, opportunities, and even our interactions with society, sometimes leading to social inequality.</p>
+                        <p>Family is one of the other factors that influence a person's identity. Once it comes to talking about what forms the identity of an individual, the way their family treats them and things they learn from them is—in our opinion—the most important thing that you can refer to.</p>
+                        <p>Gender also plays a role in shaping identity. Society often assigns different expectations based on gender, influencing our roles and opportunities. In many cultures, traditional gender norms dictate the kind of job you will have, what you can and cannot wear, the places you can go to and the activities you can participate in. For example, in certain cultures women are expected to be tradwives, limiting them to doing house chores and never allowing them to explore this world. These women are treated as objects, never to have an identity of their own.</p>
+                        <p>Age influences identity as well. As we get older and more mature, our worldview also changes. As children we are too innocent and pure to see the realities of our society, but as we enter adulthood our identity changes in order to adapt to the society we now have to live in.</p>
+                        <p>Finally, identity is deeply connected to society, the environment in which we have to live in until our hair turns the same color as our teeth. The government dictates laws that people have to follow, and that shapes our identity in a way that is really out of our control.</p>
+                        <p>All in all, there are lots of different factors that have a hand in forming the identity of a person, including but not limited to family, nationality, race, gender, and age, with each one affecting the creation of our identity in a special way.</p>
+                        <p><a href="https://app.mindmup.com/map/_free/2025/02/70e1c820f42f11efae07a703e40a37b3" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800">Link to MindMup</a></p>
+                    </div></details>
+                    <details class="bg-white rounded-lg shadow-sm"><summary class="accordion-summary font-semibold text-xl text-slate-800">Original Draft</summary><div class="accordion-content prose max-w-none"><p>Identity is made of many different aspects, which contribute to its meaning and importance in our lives. First and foremost is the place where we're born in, our country of origin. Our nationality dictates culture and language we grow up with, which in turn forms our overall identity. For instance our culture may require us to follow a certain dress code, that will become a part of our identity.</p><p>Another characteristic that forms a part of our identity, is race. Some people may view and treat us differently based on the color of our skin. For example the african-american community in the U.S. has it's own distinct sub-culture.</p></div></details>
+                    <details class="bg-white rounded-lg shadow-sm"><summary class="accordion-summary font-semibold text-xl text-slate-800">Reflective Essay</summary><div class="accordion-content prose max-w-none">
+                        <p>This piece was mine and Mr. Ashrafi’s very first, it was a great collaboration with my dear friend. Combining our different ideas into one single text was a challenge, but it was also a great experience that taught us how to find a shared voice. We worked on it on two separate occasions, once in class following the instructions of the professor, and later when we completed the text by implementing more of our ideas and turned it into a proper essay.</p>
+                        <p>Free writing, as the name suggests, doesn’t require that many instructions or pre-existing knowledge, we only need to write down exactly what comes to mind about a certain topic on a piece of paper. I believe that is why this was the first lesson to be taught in this course. It was a good first step that helped us get past the feeling of having to be perfect and just get our real thoughts down. The refining process introduced us to the idea of multiple drafts for a single text. Perhaps the goal of this exercise was to evaluate how good our writing skill was at the beginning of the semester, which gave us a starting point to see how much we improved.</p>
+                        <p>Working on this text taught us many valuable skills. The most important one was perhaps learning how to use MindMup, a platform we would use to brainstorm and make mind maps with for the rest of the semester. This tool proved to be very helpful. I personally found it much easier to organize my thoughts with this platform, which in turn helped me to write better texts. Seeing my ideas laid out like that made it easier to see how they connected, which helped me structure my writing better than just using a normal list.</p>
+                        <p>In my first attempt at free writing I failed to deliver a truly ‘free’ text. My brain has gotten used to formatting text, having a introductory sentence, a body and a conclusion, so I couldn’t really ignore all that and write a ‘free’ text. This showed me that it was hard to break away from the usual rules of writing I had learned over the years and try something more creative.</p>
+                        <p>In my second attempt, however, I did manage to write something that was closer to a free writing. I ignored most writing rules and just produced on paper what was in my mind at the time. It was a good lesson in not worrying about being perfect right from the start. These writings are unfortunately lost due to them being hand-written.</p>
+                        <p>We then used our original free writings to create a mind map on paper which we would then use to write our finalized text. The mind map consisted of the ideas we had unconsciously embedded in our texts. This step was really important because it helped us turn our first messy ideas into the organized essay we needed to write.</p>
+                        <p>The mind map then helped us write our first organized essay which was about Identity. I along with my partner wrote certain parts of the text, making sure to use as many of our ideas as possible. Later we refined our text and submitted it to the google docs space for all to view.</p>
+                        <p>In conclusion, this lesson helped me understand the process of brainstorming, the importance of mind maps, and of course how to collaborate on a piece with a peer. It really showed me how writing is a process with many steps, and that a good piece of writing doesn't just happen all at once, but comes from thinking, working together, and making changes along the way.</p>
+                    </div></details>
+                </div></div></div>
+                <!-- Project 2: Argumentative Essay -->
+                <div id="project2" class="project-content"><div class="max-w-4xl mx-auto"><button onclick="goBackToPortfolio()" class="mb-8 font-medium text-blue-600 hover:text-blue-800 transition-colors">&larr; Back to Portfolio</button><h2 class="text-3xl font-bold text-slate-900 mb-4">Argumentative Essay</h2><div class="space-y-4">
+                    <details class="bg-white rounded-lg shadow-sm"><summary class="accordion-summary font-semibold text-xl text-slate-800">Final Version</summary><div class="accordion-content prose max-w-none">
+                        <h3 class="font-bold text-center">Responsibility for the Spread of Misinformation</h3>
+                        <p>We are currently living in the age of ICT (Information and Communication Technology), an age dominated by the rise of social media platforms. With the invention of the Internet, our world has become more interconnected than ever. Information can be transferred from one corner of our globe to another in mere seconds. Though this technology has allowed us to grow and develop as a society, giving us useful information that we would have otherwise never been able to access, it has also caused much harmful and false information to spread around the world like wildfire. This phenomenon has posed a serious question: should social media platforms be held responsible for the spread of misinformation? I believe they should be, since they are the ones designing the systems that encourage its rapid spread. Misinformation has real-world consequences, and they have the technological capacity to better moderate their massive platforms.</p>
+                        <p>One argument that is often used to lift the blame from social media platforms is that they provide us with a really large quantity of useful information, from global news to scientific content and lots of other useful content such as guides, etc. They have enabled us to share knowledge across borders like never before. While it’s true that a lot of valuable information exists on these platforms, we still cannot ignore the effects of misinformation on their users. Studies have shown that false and inaccurate information has a tendency to spread much faster and reach a larger portion of said users. These users often consider the misinformation as fact, and their actions reflect that. For example, during the Covid-19 pandemic, a lot of false information regarding vaccines gained popularity on social media platforms. Many conspiracy theories started to appear, falsely claiming that vaccines contained microchips, altered the human DNA, or caused severe health complications. This led to many people not vaccinating and losing their lives.</p>
+                        <p>Another argument that is usually brought up is that social media platforms are already doing their best to stop misinformation from spreading, and thus they shouldn’t get the blame for it. This is a very bold claim, as we all know, all these platforms really care about is ad revenue and user engagement. Their algorithms will promote anything that will get the users to stay online for long periods of time. That content doesn’t always get fact-checked and filtered by their pathetically small moderation teams. It is clear that the priority for these platforms is not the accuracy of the information being shared but rather the level of engagement and interaction it can generate. This means that controversial content, often misinformation—spreads more than factual and reliable content. The more time users spend on the platform, the more advertisements they see, and the more revenue the platform generates.</p>
+                        <p>Finally, some argue that individuals are responsible for what they choose to believe in and that people shouldn’t simply believe every bit of information that they come across on the internet. It is true that people should be really careful about believing online data and information. However, when the algorithm is heavily promoting a certain agenda and actively feeding the users misinformation over and over again, how can people tell the difference between false and true information? The human brain is hardcoded to look for information that confirms our preexisting beliefs, a concept known as confirmation bias. When social media algorithms keep on pushing content that aligns with a user’s previous interactions, it reinforces their existing views, making it even harder for individuals to differentiate between fact and fiction.</p>
+                        <p>Misinformation on the internet has the potential to cause real-world damage. As discussed before, when people take false information as fact, they tend to base their actions upon it. The anti-vax movement during the Covid-19 pandemic was a perfect example of that. Another example can be the Rohingya genocide in Burma. In 2016, as the Burmese people were rapidly connecting to the internet, they were greeted by a wave of new information on platforms such as Facebook, and of course, some of that information, especially regarding the Rohingya people, was false. The Burmese people started to view the Rohingya very negatively and carried out a brutal genocide. These are only a few examples of the countless real-world tragedies that were caused by misinformation on social media.</p>
+                        <p>Social media companies are more than capable of suppressing misinformation on their platforms. With millions of dollars in revenue, they could invest in robust moderation teams that focus on combating misinformation. But the fact of the matter is, they choose not to do this because it damages their revenue. Users are more interested in content that intrigues them, and misinformation does exactly that. If these companies were required by law to spend more on moderation, the amount of misinformation on their platforms would decrease significantly.</p>
+                        <p>To conclude, in this day and age, people spend a decent amount of their time scrolling through social media. They don’t always have the time or resources to research every bit of information they see on these platforms. Oftentimes, they take them as facts, and this can indeed be very dangerous. If we unite against this storm of misinformation, we can combat it properly and prevent the horrible consequences of its spread. With proper laws and regulations, increased moderation efforts, and greater awareness, we can create an online space where truth prevails over lies.</p>
+                        <p><a href="https://atlas.mindmup.com/2025/04/fbc9c8800eff11f09468ddc3865da8fe/free_mind_map/index.html" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800">Link to MindMup</a></p>
+                    </div></details>
+                    <details class="bg-white rounded-lg shadow-sm"><summary class="accordion-summary font-semibold text-xl text-slate-800">Original Draft</summary><div class="accordion-content prose max-w-none">
+                        <h3 class="font-bold text-center">Who is Responsible for Misinformation?</h3>
+                        <p>We live in the age of the internet now. Information moves super fast. This is good because we can learn a lot, but it's also bad because lies spread really fast too. So who's fault is it? I think the social media companies should be held responsible for the misinformation on their sites.</p>
+                        <p>Some people say that social media is good because it gives us a lot of useful info. And that's true, you can learn about anything. But you can't ignore all the fake stuff. Fake news spreads way faster than real news. Like with the Covid vaccines, so many people believed crazy theories about microchips and stuff because of social media. People died because of it.</p>
+                        <p>Others say that the companies are already trying their best to stop it. I don't think so. They only care about making money from ads. Their systems are built to keep you online, and the stuff that gets the most clicks and comments is often the most controversial, which is usually the fake stuff. They don't have enough people checking facts because that costs money.</p>
+                        <p>You could also argue that it's up to people to be smart and not believe everything they read. People should be more careful. But the websites are designed to feed you things you already agree with. So if you start believing one fake thing, the algorithm will just show you more and more of it. It becomes hard to know what's real and what's not.</p>
+                        <p>This isn't just online drama, it causes real problems. The anti-vax thing is one example. The Rohingya genocide in Burma was also fueled by fake news on Facebook. These platforms have the money to hire more people and build better systems to stop this, but they don't because the controversial stuff makes them more money. So in the end, it's their responsibility to fix the problem they helped create.</p>
+                    </div></details>
+                    <details class="bg-white rounded-lg shadow-sm"><summary class="accordion-summary font-semibold text-xl text-slate-800">Reflective Essay</summary><div class="accordion-content prose max-w-none">
+                        <p>The argumentative essay was a big step up from the other tasks. It was not just describing or writing whatever I wanted at will; I had to take a stand and be its proponent. The topic of misinformation is something I feel strongly about, so having an opinion was never an issue, but making a good case for it was the challenge.</p>
+                        <p>My first draft was truly just about getting down my main points. I knew that I wanted to argue that social media companies do have a responsibility, and I had a few ideas of why. It was also important to think through the opposing argument. Arguments like "people should be responsible for what they believe" helped me to make my own argument stronger, as I was able to explain why that viewpoint is not entirely complete.</p>
+                        <p>Providing real-world examples like the COVID-19 pandemic and the Burma crisis was truly a critical part of the process. These examples made the problem seem real and showed that this is not a trivial issue; it has vast implications. This helped me understand that a good argument needs more than opinion; it needs facts to back it up.</p>
+                        <p>The most significant concept I took away from this essay was the way to structure an argument. I had to introduce the problem, state my position, refute the opposing arguments, and then conclude it all in a conclusion. It was similar to building something piece by piece. This assignment really made me understand how to write in a way that persuades the reader, something I know I'll be using plenty of times in the years ahead.</p>
+                    </div></details>
+                </div></div></div>
+                <!-- Project 3: Descriptive Essay -->
+                <div id="project3" class="project-content"><div class="max-w-4xl mx-auto"><button onclick="goBackToPortfolio()" class="mb-8 font-medium text-blue-600 hover:text-blue-800 transition-colors">&larr; Back to Portfolio</button><h2 class="text-3xl font-bold text-slate-900 mb-4">Descriptive Essay: Guernica</h2><div class="space-y-4">
+                    <details class="bg-white rounded-lg shadow-sm"><summary class="accordion-summary font-semibold text-xl text-slate-800">Final Version</summary><div class="accordion-content prose max-w-none">
+                        <h3 class="font-bold text-center">A Description of Guernica</h3>
+                        <p>This seems to me like a series of statues that have been destroyed by a blast, probably as a result of the bombings. To the left, the bull stands as an important animal to the Spanish; they have rituals where their Matadors face off against bulls or where the bull chases the crowd through the streets. The bull is a sort of antagonist, a symbol of evil within Spanish culture, and those who dare to challenge it are regarded as heroes. Crumbling under the bull, I see a woman and her dead child as she cries in agony. Did her child die at the hands of the bull? Perhaps the bull represents the people who sided with the fascists in the war, those who betrayed their own people.</p>
+                        <p>In the center of the painting, I see a horse stepping over the body of a fallen soldier, and it appears to be mourning the death of the hero. The horse is often the symbol of freedom, so we could see this as “freedom weeps as heroes die.” The freedom fighter dying is portrayed here as a horse losing its rider.</p>
+                        <p>To the right of the picture, a building is on fire, with people burning inside and screaming, crying out for help. On the bottom, a woman can be seen desperately trying to escape the burning building; she appears to be reaching for freedom. Another woman cannot even attempt to escape. She is a victim of war, another number added to the sum of casualties. No one is there to save her; no one hears her cries.</p>
+                        <p>From a window above, I see a person peeking their head out, holding what appears to be a lamp. Perhaps she is the symbol of the observer, those who wish to sit out the war and look from a distance. But she's also in danger, showing that not even the neutrals can escape the horrors of war.</p>
+                        <p>At last, there is the shining beacon at the top center of the painting. Perhaps this is a beacon of hope, or maybe the light from the blast... I belive the point with these surreal paintings is that people can interpret them in different ways and give them meanings of their own. One might see the light as a sign of hope, while others might view it as a sign of iminent death. In the end, one thing is clear: “War is not hell. War is war, and hell is hell. And of the two of them, war is a lot worse.”</p>
+                    </div></details>
+                    <details class="bg-white rounded-lg shadow-sm"><summary class="accordion-summary font-semibold text-xl text-slate-800">Original Draft</summary><div class="accordion-content prose max-w-none">
+                        <h3 class="font-bold">Guernica</h3>
+                        <p>This seems to me like a series of statues that have been destroyed by a blast probably as a result of the bombings. The bull is an important animal to the Spanish, they have rituals where their Matadors face off against bulls or where the bull chases the crowd through the streets. The bull is a sort of antagonist, a symbol of evil within the spanish culture and those who dare to challenge it are regarded as heroes. Crumbling under the bull I see a woman and her dead child, she cries in agony. Did her child die at the hands of the bull? Perhaps the bull represents the people who sided with the fascists in the war, those who betrayed their own people. In the center of the painting I see a horse, stepping over the body of a fallen soldier. It appears to be mourning the death of the hero. The horse is often the symbol of freedom, so we could see this as “freedom weeps as heroes die”. The freedom fighter dying is portrayed here as a horse losing its rider. To the right of the picture, I see a building on fire, people burning inside and screaming, crying out for help. On the bottom I see a woman, desperately trying to escape the burning building, she appears to be reaching for freedom… Another woman cannot even attempt to escape, she is a victim of war, another number added to the sum of casualties, no one is there to save her, no one hears her cries. I see a person poking their head out of the window, holding what appears to be a lamp. Perhaps she is the symbol of the observer, those who wish to sit out the war and look from a distance. But she's also burning, not even the neutrals can escape the horrors of war. At last, there is the shining beacon at the centre of the painting, perhaps this is a beacon of hope, or maybe the light from the blast… I think the point with these surreal paintings is that people can interpret them in different ways, give them meanings of their own. One might see the light as a sign of hope, others might view it differently, in the end one thing is clear: “War is not hell, war is war and hell is hell and of the two of them, war is a lot worse”.</p>
+                    </div></details>
+                    <details class="bg-white rounded-lg shadow-sm"><summary class="accordion-summary font-semibold text-xl text-slate-800">Reflective Essay</summary><div class="accordion-content prose max-w-none">
+                        <p>This is the last essay I wrote for this course, it taught me lots of new information. I learned how to describe images, views and even objects to a reader. Writing a descriptive essay is not just about going through everything you see, it should be able to make the reader feel the same way as you did while looking at the image. This was a big step for me, moving from just listing facts to trying to share an actual feeling.</p>
+                        <p>I believe the deliberate choice of Guernica, a surreal painting, for this assignment is meant to teach a valuable lesson: There’s always more to the image than what the eye can see. This painting is full of abstract shapes and symbols, one can interpret them in any way that they like. It forces you to think deeper about what the artist was trying to say, and it makes your own interpretation a key part of the description.</p>
+                        <p>The task of writing the essay started off as a freewriting task, we were told to write whatever we see in this image as we were looking at it for the first time. Initially, I didn’t produce much of first draft. It was only after the class that I managed to make a full first draft for the essay. That first look was important because it captured my most honest reactions to the chaos in the painting.</p>
+                        <p>Interestingly the professor allowed me to read my draft out loud for the class, then they proceeded to point out the positive and negative points of my essay. I learned a lot from their feedback, which helped me make a better, more organized final version. Hearing my own words and getting immediate comments on them was incredibly helpful. It showed me exactly where my descriptions were strong and where they needed more structure to guide the reader.</p>
+                        <p>Though I believe I wrote a decent essay for this task, I can’t help but feel like I could have done more to polish and refine it for the final draft. Next time I will be writing a descriptive essay, I will make sure to pay more attention to directions, proper punctuation and more detail in general. This whole process showed me that writing isn't just a single action, but a series of steps, and there's always room to improve with each one.</p>
+                    </div></details>
+                </div></div></div>
+                <!-- Project 4: Multimodal Text -->
+                <div id="project4" class="project-content"><div class="max-w-4xl mx-auto"><button onclick="goBackToPortfolio()" class="mb-8 font-medium text-blue-600 hover:text-blue-800 transition-colors">&larr; Back to Portfolio</button><h2 class="text-3xl font-bold text-slate-900 mb-4">Multimodal Text: A Green Initiative</h2><div class="space-y-4">
+                    <details class="bg-white rounded-lg shadow-sm" open><summary class="accordion-summary font-semibold text-xl text-slate-800">Final Version</summary><div class="accordion-content prose max-w-none">
+                        <div style="position: relative; width: 100%; height: 0; padding-top: 56.2500%; padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden; border-radius: 8px; will-change: transform;">
+                            <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;" src="https://www.canva.com/design/DAGmAxfPbKg/VEV-Jys8dtCEq5wKnGNeTw/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen"></iframe>
+                        </div>
+                    </div></details>
+                    <details class="bg-white rounded-lg shadow-sm" open><summary class="accordion-summary font-semibold text-xl text-slate-800">Reflective Essay</summary><div class="accordion-content prose max-w-none">
+                        <p>This piece was an interesting one, I had never thought of a text as more than just words on a piece of paper. We learned that there are several ways of conveying a message, the most well known being through written language. We can give information to others using sound, visuals and even signs.</p>
+                        <p>We learned about Infographics, how they are used to catch the attention of large audiences and can transfer our message in very simple ways. I ended up making my multimodal work an infographic as well, since I saw it as the ultimate way of persuading a non-academic audience.</p>
+                        <p>My infographic was simple, it had few words, I paid a great deal of attention to colors and the size of my text. I could have improved my infographic a lot more had I spent more time on it, but unfortunately, I didn’t have any time to work on it further.</p>
+                        <p>My work was chosen by the professor and shown to our class, I received some valuable comments which helped me realize the major flaws in my work and taught me a lesson for future projects. I think I could have made a better design and chosen a better method for my multimodal text had I more time to spend on it. I apologize for not prioritizing my university assignment over other aspects of my life.</p>
+                    </div></details>
+                </div></div></div>
+                <!-- Project 5: Argumentative Essay (AI) -->
+                <div id="project5" class="project-content"><div class="max-w-4xl mx-auto"><button onclick="goBackToPortfolio()" class="mb-8 font-medium text-blue-600 hover:text-blue-800 transition-colors">&larr; Back to Portfolio</button><h2 class="text-3xl font-bold text-slate-900 mb-4">Argumentative Essay: AI in Academia</h2><div class="space-y-4">
+                    <details class="bg-white rounded-lg shadow-sm"><summary class="accordion-summary font-semibold text-xl text-slate-800">Final Version</summary><div class="accordion-content prose max-w-none">
+                        <h3 class="font-bold text-center">Should university students be allowed to use A.I. for their assignments?</h3>
+                        <p>Artificial Intelligence’s (AI’s) rise in many different fields can’t be ignored. This has caused heated arguments among the experts of said fields. Ever since AI tools like ChatGPT and GrammarlyAI became common for students, the field of education has suffered a massive decline. This brings up a key question. Should university students use AI for their academic work? AI offers benefits like efficiency and support; however, it also raises concerns about plagiarism. Is using AI cheating? This essay will argue that AI shouldn't be banned in academics; instead, its use needs regulation and monitoring. This ensures AI doesn't hurt students' learning.</p>
+                        <p>Despite its many benefits, there are concerns about overreliance on AI. The aim of education in general is to encourage independent thought and inspire new ideas. It also teaches us how to solve problems and grow as a person. If students use AI for whole assignments, they might not learn anything. Al-Abdullatif and Sereetrakul (2023) note that AI overdependence can reduce the students’ critical thinking and lessen their personal accountability. All these are valid reasons to be concerned; however, with proper regulations in place to limit the usage of AI in academia, we can prevent this overreliance. For example, students may be allowed only a few AI prompts per assignment, so they will learn to use it wisely and get the best out of it.</p>
+                        <p>Professors might also find grading student work difficult. It can prove difficult to tell AI writing from human writing, which could cause grade inflation or unfair grades. Students who do their work independently might feel demotivated and resort to using AI themselves. Others using AI might get similar grades with less effort (Marr, 2023). Professors are right to be concerned about the abundance of AI-generated content being passed off as human-written. Although, with many robust AI detection tools available online, the task of recognizing AI content has become easier than ever.</p>
+                        <p>Plagiarism is another major concern. AI-generated content can seem original, especially if the student attempts to refine it, but it's trained on existing essays and materials. Much of this source material is plagiarized and taken without the consent of their authors. Dishonest AI use could violate academic honesty and codes of ethics. The World Intellectual Property Organization (2023) states generative AI creates many ethical issues within the context of academia. As mentioned before, the many AI detectors available online can also check for AI plagiarism, thus eliminating this concern for good.</p>
+                        <p>The last issue, which is perhaps the most important, is creativity. Academic writing is not just the transfer of information, especially in fields like humanities and social sciences. It involves developing a voice of our own, making original arguments, and expressing our unbiased views. Outsourcing these tasks to AI means students may miss crucial chances to build their own intellectual identity. This is perhaps the most serious issue regarding AI, but there's a simple solution for it: Limit AI to labor-intensive tasks and leave the creative tasks for humans. AI can generate summaries, take notes, etc., while the students focus on the important and creative tasks.</p>
+                        <p>AI's main advantage is improving student productivity. AI tools can automate tasks. These include generating summaries, formatting references, or checking grammar, which saves students a lot of time. An Inside Higher Ed report (2023) showed over 60% of students felt AI helped them to some extent: They managed their workloads better and felt less stressed. AI acts as our academic assistant, letting us focus on complex tasks which require critical thinking and creativity.</p>
+                        <p>Knowing how to use AI is also a vital 21st-century skill. Crafting good prompts is important for most tasks. Analyzing AI content is now known by many as "prompt engineering." The tech industry already recognizes this practice, and some even believe it should be a university major. Morley and Floridi (2023) suggest AI use in academia builds technical skills that are essential for our future careers. Learning responsible AI use can open more job options for us and also prepares students for their future job markets.</p>
+                        <p>A balanced approach is therefore necessary. Universities shouldn't ban AI entirely; they also shouldn't allow unrestricted use. Instead, they should set clear rules. These rules should guide ethical and productive AI use. As mentioned previously, AI could be allowed for doing most non-creative, time-consuming tasks. Examples include citation management, proofreading, or outlining.</p>
+                        <p>Educators must clearly state AI use policies. They should specify if AI is allowed and under what conditions should students use it. Transparency is absolutely crucial from both academic institutions and their students. Disclosing AI help is sort of like citing sources; this can help maintain academic decency.</p>
+                        <p>In conclusion, AI can improve our academic experience, but its unregulated use can harm our educational goals. University students should learn to use AI tools responsibly and ethically. Higher education aims to create independent thinkers; it seeks to foster creative and critical minds, not just good assignments and high grades. If used well, AI can and will support this mission, not stop it.</p>
+                        <p><strong>References:</strong></p>
+                        <ul class="list-disc pl-5">
+                            <li>Al-Abdullatif, A. M., & Sereetrakul, W. (2023). AI and Academic Learning: Effects on Student Engagement and Integrity. Journal of Educational Technology, 21(4), 134–145.</li>
+                            <li>Inside Higher Ed. (2023). Survey: How Students Use AI in College.</li>
+                            <li>Marr, B. (2023). How Generative AI Is Reshaping Education. Forbes.</li>
+                            <li>Morley, J., & Floridi, L. (2023). The Ethics of Prompt Engineering and AI Literacy. AI & Society, 38(1), 112–125.</li>
+                            <li>World Intellectual Property Organization (WIPO). (2023). Artificial Intelligence and Intellectual Property.</li>
+                        </ul>
+                        <p><a href="https://atlas.mindmup.com/2025/04/7dd2e2a0201511f09f90918d8551b9d1/should_university_students_be_allowed_to/index.html" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800">Link to MindMup</a></p>
+                    </div></details>
+                    <details class="bg-white rounded-lg shadow-sm"><summary class="accordion-summary font-semibold text-xl text-slate-800">Original Draft</summary><div class="accordion-content prose max-w-none">
+                        <p>The recent widespread arrival of artificial intelligence (AI) has stoked endless controversy across most sectors, particularly the academic one. With AI tools such as ChatGPT, GrammarlyAI, and Notion AI being accessible to students, the question at hand is: should university students use AI for assignments? While AI presents numerous advantages in terms of productivity and academic support, it also raises issues of academic integrity, learning experience, and ethics on the flip side. This essay argues that while AI should not be entirely excluded from academic settings, its use needs to be balanced and morally established to preserve the inherent functions of education.</p>
+                        <p>The primary advantage of AI is that it can increase academic productivity. AI tools can facilitate activities like summarizing, organizing references, or correcting grammar, freeing up scholars with plenty of time. According to research by Inside Higher Ed (2023), over 60% of the students polled affirmed that they used AI to better manage their academic load. Here, AI is taking the form of an academic helper, allowing students to pursue more deeply involved work involving critical thinking and creativity.</p>
+                        <p>In addition, mastery of AI is becoming a critical 21st-century skill. Having the ability to design effective prompts and interpret AI-produced text is a form of "prompt engineering," a practice already being performed in the tech industry. In alignment with the suggestion of Morley and Floridi (2023), incorporating AI tools into scholarly assignments provides students with the digital literacy competencies they will most likely possess in upcoming professional life. Therefore, learning how to interact with AI responsibly may enhance employability and prepare students for a rapidly changing technological landscape.</p>
+                        <p>However, apart from these benefits, there are serious concerns regarding the overuse of AI by students. One of the prime purposes of education is to facilitate independent thinking, problem-solving, and self-growth. When students use AI to do entire assignments, they may lose the whole learning process. Al-Abdullatif and Sereetrakul (2023) state that excessive dependence on AI tools can lead to weaker critical thinking and lack of personal accountability in work.</p>
+                        <p>Teachers also have to measure student performance to some extent. AI-generated writing is increasingly hard to differentiate from human work, and it is challenging to know whether a student has indeed read course material. This may cause grades to be inflated or unequally benefit students academically. Students who perform their own work may also be demotivated when peers who utilize AI receive the same grades with much less effort (Marr, 2023).</p>
+                        <p>Academic integrity is also of primary concern. AI-generated work, though original in outcome, is trained on enormous databases, many of which contain copyrighted or plagiarized material. As such, nondisclosure use of AI can inadvertently breach principles of academic integrity and intellectual property. As the World Intellectual Property Organization (2023) observes, generative AI poses moral questions regarding copyright and authorship of creative content, especially when works by authors and artists are utilized to train such tools without authorization.</p>
+                        <p>There is creativity as well. It's not only about reporting information in the humanities and social sciences, it is about constructing a voice, an argument, and expressing a detailed perspective. When students delegate these tasks to AI, they risk missing an opportunity to develop their own unique intellectual voice.</p>
+                        <p>In recognition of these concerns, a balanced approach is warranted. Rather than an outright ban of AI or unrestricted use, universities need to have clearly defined policies regarding how AI applications can be used ethically and positively as part of academic work. For example, AI can be permitted for mundane, time-consuming tasks such as citation management, proofreading, or outlining. Critical thinking, originality, and personal analysis-based tasks, however, need to be accomplished without AI assistance.</p>
+                        <p>Furthermore, instructors need to clearly state whether the employment of AI is allowed in assignments and on what terms. Institutions and students alike should be open. Revealing help from AI, similar to revealing a tutor or other external aid, can maintain academic honesty without stifling creativity.</p>
+                        <p>Lastly, while AI can make the learning experience richer, uncontrolled use can undermine educational goals. University students must be prodded to employ AI tools responsibly and ethically. The mission of higher education is not merely to produce assignments, but to produce independent, innovative, and critical thinkers. Employed properly, AI can help advance that mission, not replace it.</p>
+                    </div></details>
+                    <details class="bg-white rounded-lg shadow-sm"><summary class="accordion-summary font-semibold text-xl text-slate-800">Reflective Essay</summary><div class="accordion-content prose max-w-none">
+                        <p>This work could be seen as my Magnum Opus, my greatest ever, the crown jewel of this portfolio. I spent the most amount of time on this essay across several assignments. Since we had done an argumentative essay before, I started writing this one with a lot more confidence. Although, I must admit due to my mismanagement of time in that period I had to get help from certain AI platforms, something I am ashamed of to this day.</p>
+                        <p>The first draft of this essay includes certain AI generated elements, apart from those I think my argument was supported by some concrete evidence and facts this time. The structure and credibility of the argument was improved, the tone was closer to actual academic work and I paid extra attention to smooth and clear transitions in the text.</p>
+                        <p>After the initial feedback from the professor was given to us, we learned some of the common mistakes that we had made. One of such mistakes was improper inclusion of references, which was the first point of improvement for this essay and the focus of that session. We learned of the APA style of referencing which is often used when writing academic essays. We then were tasked with fixing any referencing issues our texts had.</p>
+                        <p>The second point of improvement for this essay was an overall revision of the text, as in putting in more thought and making our essay look closer to an actual academic essay. In this phase I changed my text quite a lot, I tried to remove most of the AI elements I had initially used in the text and make it a true human written essay.</p>
+                        <p>There was, however, another aspect of the essay that could be improved through revision, that being punctuation. We had not properly used punctuation in our essays and the problems were evidently clear. Therefore, for the last time I began revising my essay in order to make it perfect.</p>
+                        <p>As the last round of pair check was done with another classmate of mine, I could call this essay finished. I obviously learned many useful skills and writing structures from this essay, which will definitely help me with future tasks.</p>
+                    </div></details>
+                </div></div></div>
+                <!-- Project 6: Problem and Solution Essay -->
+                <div id="project6" class="project-content"><div class="max-w-4xl mx-auto"><button onclick="goBackToPortfolio()" class="mb-8 font-medium text-blue-600 hover:text-blue-800 transition-colors">&larr; Back to Portfolio</button><h2 class="text-3xl font-bold text-slate-900 mb-4">Problem and Solution Essay</h2><div class="space-y-4">
+                    <details class="bg-white rounded-lg shadow-sm"><summary class="accordion-summary font-semibold text-xl text-slate-800">Final Version</summary><div class="accordion-content prose max-w-none">
+                        <h3 class="font-bold text-center">Suggestions for a relaxing life</h3>
+                        <p>In today's chaotic life, stress is an integral part of our daily lives. Stress management in our daily life is mandatory to secure our mental and physical health. We cannot remove all the sources of stress, but there are certain tips which can reduce the impact of stress and live a calm, balanced life.</p>
+                        <p>Stress is our innate response to pressure or challenge. It may be due to several reasons such as work, financial stress, relationships, and responsibilities in daily life. Even though short-term stress will sometimes inspire us, long-standing or chronic stress will be harmful to our mental and also physical well-being. It may lead to anxiety, depression, sleep problems, and severe conditions like high blood pressure and heart disease in our later years.</p>
+                        <p>Overworking is one of the key causes of stress. The majority of people are strained to work long hours and even pull an extra shift to work on their off days, leaving little or no time for rest or recovery. This contributes to burnout as well as reduced performance. Lack of proper regular physical exercise is also another issue that is often neglected due to our busy schedules. Lacking activity, stress is built up, and energy is lost. Financial stress is also common, especially when people are taking part in careless spending or buying things outside of their budgets. Lastly, people forget activities that they enjoy, which are essential to our emotional stability. Without sufficient time for fun and recreation, stress becomes an unmanageable issue.</p>
+                        <p>Even though stress is universal, we can manage it by means of carefully thought out changes in lifestyle. Even some small, but regular activities have the power to make a big difference towards stress elimination in daily life and overall health.</p>
+                        <p>A couple of habits go a long way. Firstly, individuals must work less and fully utilize their days off by relaxing and rejuvenating themselves. Secondly, physical exercise, at the minimum three to four times a week, reduces tension built up over time and enhances mood. Third, frugal spending, spending for only what is necessary, reduces monetary stress. Lastly, the most important and effective habit is taking time out to enjoy oneself. Fun activities offer us a healthy release and tend to neutralize stress naturally.</p>
+                        <p>Each of these options contributes to leading a healthier and stress-free life. Creating work boundaries creates balance and prevents burnout. Exercise releases endorphins like dopamine, the body's own stress warriors, and also enhances the quality of sleep. Mindful spending provides financial security and prevents money-related stress. Enjoyable activities, be it a hobby, social gathering, or plain relaxing, rejuvenate our energy levels and remind us that there is more to life than just duties. They don't need much effort on our part but they do require consistency.</p>
+                        <p>In short, stress is a reality of life but it doesn’t need to be in charge. We can reduce stress to a great extent and improve the quality of our lives by establishing work schedules, physical exercise, living in means, and leaving space for enjoyment. Individual, conscious actions can lead to long-term positive outcomes and a more peaceful, enjoyable daily life.</p>
+                    </div></details>
+                    <details class="bg-white rounded-lg shadow-sm"><summary class="accordion-summary font-semibold text-xl text-slate-800">Original Draft</summary><div class="accordion-content prose max-w-none">
+                        <h3 class="font-bold text-center">Suggestions for a relaxing life</h3>
+                        <p>In today’s fast-paced world, stress has become an inevitable part of our daily lives. Managing stress in our daily life is essential for maintaining our mental and physical health. While we may not be able to eliminate all sources of stress, certain strategies can help us reduce its impact and live a more relaxed, balanced life.</p>
+                        <p>Stress is our body’s natural response to pressure or challenge. It can be caused by many factors, including work, financial hardship, relationships, and responsibilities in our daily life. Though short-term stress can sometimes motivate us, long-term or chronic stress can cause harm to both our mental and physical health. It may lead to anxiety, depression, sleep problems, and even serious conditions like high blood pressure and heart disease in our later life.</p>
+                        <p>One major cause of stress is working too much. Many people feel pressured to work for long hours and even at times continue to work on their days off, leaving a tiny amount of time for rest or recovery. This can result in burnout and lower productivity. Another issue is the lack of regular physical activity, which is often neglected due to our busy schedules. Without exercise, stress builds up, and energy levels go down. Financial stress is also common, especially when people make impulsive purchases or spend more than they can afford. Lastly, people often forget to prioritize activities that bring joy, which are essential for our emotional health. Without proper time for fun and relaxation, stress can become an overwhelming issue.</p>
+                        <p>While stress is a widespread problem, we can manage it through thoughtful lifestyle changes. Even some simple, but consistent actions can have a huge impact on reducing stress in our day-to-day life and improving overall well-being.</p>
+                        <p>A few key practices can make a big difference. First, individuals should avoid working excessively and take full advantage of their days off to rest and recharge. Second, engaging in some physical activity at least three to four times a week helps relieve built-up tension and boosts mood. Third, being mindful of spending—buying only what is truly needed—can ease financial pressure. Finally, making time for fun is the most important and effective solution. Enjoyable activities offer us a healthy escape and naturally help to reduce stress levels.</p>
+                        <p>Each of these solutions contributes to a healthier and more relaxed lifestyle. Setting work boundaries promotes balance and prevents exhaustion. Regular exercise releases endorphins like dopamine, which are the body’s natural stress relievers, and it can help to improve sleep quality. Mindful spending creates financial stability and reduces money-related anxiety. Fun activities, whether it’s a hobby, social event, or quiet relaxation, restore our emotional energy and remind us that life is about more than just responsibilities. These changes don’t require that much effort but they do need us to be consistent.</p>
+                        <p>In conclusion, stress may be a part of life, but it does not have to take control. By limiting work hours, exercising regularly, spending wisely, and making time for enjoyment, we can significantly reduce stress and improve our quality of life. Small, intentional changes can lead to long-term benefits and a more peaceful, fulfilling daily experience.</p>
+                    </div></details>
+                    <details class="bg-white rounded-lg shadow-sm"><summary class="accordion-summary font-semibold text-xl text-slate-800">Reflective Essay</summary><div class="accordion-content prose max-w-none">
+                        <p>The first draft of this essay was done by AI, I only paraphrased and "humanized" it. I am not proud of this essay and have nothing more to say about it, except that if I had the time I would have done it myself and I'm truly sorry.</p>
+                    </div></details>
+                </div></div></div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 mt-16">
+        <div class="container mx-auto px-6 py-8 text-center text-slate-500">
+             <!-- User's name and correct year added -->
+            <p>&copy; 2025 Ali Rezaee. All Rights Reserved.</p>
+            <p class="text-sm mt-1">Created for Advanced Writing, Allameh Tabataba'i University.</p>
+        </div>
+    </footer>
+
+    <script>
+        // --- This script handles the single-page navigation ---
+
+        // Get references to the main view containers
+        const homeView = document.getElementById('home-view');
+        const appView = document.getElementById('app-view');
+        
+        // Get references to content inside the app view
+        const pageSections = appView.querySelectorAll('.page-section');
+        const projectDetailsContainer = document.getElementById('project-details');
+        const allProjectContents = document.querySelectorAll('.project-content');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        // Function to switch between major views (Home, Portfolio, About)
+        const showView = function(viewId) {
+            // First, hide everything inside the main app container
+            pageSections.forEach(function(s) { s.style.display = 'none'; });
+            projectDetailsContainer.classList.add('hidden');
+            allProjectContents.forEach(function(p) { p.style.display = 'none'; });
+
+            // Update active state on navigation links
+            navLinks.forEach(function(link) {
+                link.classList.toggle('active', link.getAttribute('href').substring(1) === viewId);
+            });
+
+            // Show the correct top-level container (home vs. the rest of the app)
+            if (viewId === 'home') {
+                homeView.classList.remove('hidden');
+                appView.classList.add('hidden');
+            } else {
+                homeView.classList.add('hidden');
+                appView.classList.remove('hidden');
+
+                // Show the correct section within the app (portfolio or about)
+                const targetSection = document.getElementById(viewId);
+                if (targetSection) {
+                    targetSection.style.display = 'block';
+                }
+            }
+            window.scrollTo(0, 0); // Scroll to top on every view change
+        };
+
+        // Function to show a specific project's details
+        const showProject = function(projectId) {
+            // Ensure the main app view is visible and home is hidden
+            homeView.classList.add('hidden');
+            appView.classList.remove('hidden');
+
+            // Hide the main page sections (portfolio, about)
+            pageSections.forEach(function(s) { s.style.display = 'none'; });
+            
+            // Show the project details container and the specific project
+            projectDetailsContainer.classList.remove('hidden');
+            document.getElementById(projectId).style.display = 'block';
+            window.scrollTo(0, 0);
+        };
+
+        // Function to return to the main portfolio grid
+        const goBackToPortfolio = function() {
+            showView('portfolio');
+        };
+
+        // Add click event listeners to all navigation links
+        navLinks.forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = link.getAttribute('href').substring(1);
+                showView(targetId);
+            });
+        });
+
+        // Show the home view by default when the page loads
+        window.addEventListener('load', function() {
+            showView('home');
+        });
+    </script>
+
+</body>
+</html>
